@@ -22,7 +22,7 @@
 #include <linux/of_device.h>
 #include <linux/delay.h>
 #include <linux/spinlock.h>
-#include <nubia_hw_version.h>
+#include "nubia_hw_version.h"
 #include <linux/gpio.h>
 #include <linux/of_gpio.h>
 #include <linux/input.h>
@@ -145,7 +145,7 @@ err_pctrl_get:
 	return ret;
 }
 
-//¿ªÊ¼½øÈëµÚÒ»´ó²¿·Ö-¶ÁÈ¡pcb°æ±¾²¿·Ö
+//å¼€å§‹è¿›å…¥ç¬¬ä¸€å¤§éƒ¨åˆ†-è¯»å–pcbç‰ˆæœ¬éƒ¨åˆ†
 #ifdef CONFIG_NUBIA_HW_VER_BY_ADC
 const struct hw_pcb_adc_map_str* nubia_get_pcb_table_item_by_adc(const struct hw_pcb_adc_map_str *pts,
 	   uint32_t tablesize, int input)
@@ -192,7 +192,7 @@ const struct hw_pcb_gpio_map_str* nubia_get_pcb_table_item_by_gpio(const struct 
 		return NULL;
 }
 #endif
-//¶ÁÈ¡pcb type£¬¸øÆäËûÇı¶¯Ä£¿éÊ¹ÓÃ
+//è¯»å–pcb typeï¼Œç»™å…¶ä»–é©±åŠ¨æ¨¡å—ä½¿ç”¨
 int nubia_get_hw_id(void)
 {
 #ifdef CONFIG_NUBIA_HW_VER_BY_ADC
@@ -214,7 +214,7 @@ int nubia_get_hw_id(void)
 }
 EXPORT_SYMBOL_GPL(nubia_get_hw_id);
 
-//¶ÁÈ¡pcb°æ±¾£¬¸øÆäËûÇı¶¯Ä£¿éÊ¹ÓÃ
+//è¯»å–pcbç‰ˆæœ¬ï¼Œç»™å…¶ä»–é©±åŠ¨æ¨¡å—ä½¿ç”¨
 void nubia_get_hw_pcb_version(char* result)
 {
 #ifdef CONFIG_NUBIA_HW_VER_BY_ADC
@@ -237,7 +237,7 @@ void nubia_get_hw_pcb_version(char* result)
 }
 EXPORT_SYMBOL_GPL(nubia_get_hw_pcb_version);
 
-//¶ÁÈ¡pcb°æ±¾£¬¸øÉÏ²ãÍ¬ÊÂÊ¹ÓÃ
+//è¯»å–pcbç‰ˆæœ¬ï¼Œç»™ä¸Šå±‚åŒäº‹ä½¿ç”¨
 static ssize_t nubia_hw_pcb_version_show(struct kobject *kobj,
 		struct kobj_attribute *attr, char *buf)
 {
@@ -251,9 +251,9 @@ static ssize_t nubia_hw_pcb_version_show(struct kobject *kobj,
 static struct kobj_attribute pcb_version_attr=
 	__ATTR(pcb_version, 0664, nubia_hw_pcb_version_show, NULL);
 
-//¶ÁÈ¡Pcb²¿·Ö½áÊø
+//è¯»å–Pcbéƒ¨åˆ†ç»“æŸ
 
-//¿ªÊ¼½øÈëµÚ¶ş²¿·Ö-¶ÁÈ¡rf²¿·Ö
+//å¼€å§‹è¿›å…¥ç¬¬äºŒéƒ¨åˆ†-è¯»å–rféƒ¨åˆ†
 const char* nubia_get_rf_band_by_gpio(const struct hw_rf_band_gpio_map_str *pts,
 		uint32_t tablesize)
 {
@@ -280,7 +280,7 @@ const char* nubia_get_rf_band_by_gpio(const struct hw_rf_band_gpio_map_str *pts,
 }
 EXPORT_SYMBOL_GPL(nubia_get_rf_band_by_gpio);
 
-//¶ÁÈ¡ÉäÆµÀàĞÍ¸øÉÏ²ãÊ¹ÓÃ
+//è¯»å–å°„é¢‘ç±»å‹ç»™ä¸Šå±‚ä½¿ç”¨
 static ssize_t nubia_hw_rf_band_show(struct kobject *kobj,
 		struct kobj_attribute *attr, char *buf)
 {
@@ -300,9 +300,9 @@ static ssize_t nubia_hw_rf_band_show(struct kobject *kobj,
 static struct kobj_attribute hw_rf_band_attr=
 	__ATTR(rf_version, 0664, nubia_hw_rf_band_show, NULL);
 
-//¶ÁÈ¡ÉäÆµÆµ¶ÎÍê³É
+//è¯»å–å°„é¢‘é¢‘æ®µå®Œæˆ
 
-//¿ªÊ¼¶ÁÈ¡µÚÈı´ó²¿·Ö-Èí¼şÏà¹ØµÄÒ»Ğ©ÅäÖÃ
+//å¼€å§‹è¯»å–ç¬¬ä¸‰å¤§éƒ¨åˆ†-è½¯ä»¶ç›¸å…³çš„ä¸€äº›é…ç½®
 #ifdef CONFIG_NUBIA_HW_CONFIG_BY_GPIO
 const struct hw_config_gpio_map_st* nubia_get_config_table_item_by_gpio(const struct hw_config_gpio_map_st *pts,
 		uint32_t tablesize)
@@ -350,7 +350,7 @@ const struct hw_config_adc_map_st* nubia_get_config_table_item_by_adc(const stru
 
 }
 #endif
-//¶ÁÈ¡wifi ÀàĞÍ
+//è¯»å–wifi ç±»å‹
 const char* nubia_get_hw_wifi(void)
 {
 #ifdef CONFIG_NUBIA_HW_CONFIG_BY_GPIO
@@ -375,7 +375,7 @@ const char* nubia_get_hw_wifi(void)
 EXPORT_SYMBOL_GPL(nubia_get_hw_wifi);
 
 
-//¶ÁÈ¡ÅäÖÃ±ê×¼£¬Èç¸ßÅä£¬µÍÅäµÈ
+//è¯»å–é…ç½®æ ‡å‡†ï¼Œå¦‚é«˜é…ï¼Œä½é…ç­‰
 void nubia_get_config_standard(char* result)
 {
 #ifdef CONFIG_NUBIA_HW_CONFIG_BY_GPIO
@@ -415,7 +415,7 @@ static struct kobj_attribute config_standard_attr=
 	__ATTR(config_version, 0664, nubia_config_standard_show, NULL);
 
 
-//µ÷ÊÔÖµµÄ¶ÁÈ¡ºÍĞ´Èë
+//è°ƒè¯•å€¼çš„è¯»å–å’Œå†™å…¥
 static ssize_t debug_value_store(struct kobject *kobj,
 	    struct kobj_attribute *attr, const char *buf, size_t count)
 {
